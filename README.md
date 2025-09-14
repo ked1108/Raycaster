@@ -1,5 +1,7 @@
 # Raycaster Engine
 
+
+
 A simple **C++ OpenGL raycaster engine** inspired by *Wolfenstein 3D*.
 Features include:
 
@@ -7,7 +9,9 @@ Features include:
 * **First-person navigation** with collision detection.
 * **Raycasting renderer** with walls, floor, ceiling, and shading.
 * **Mini-map overlay** for debugging.
-* **ImGui integration** to tweak settings (FOV, speed, maze size, etc.) at runtime.
+* **ImGui integration** to tweak settings (FOV, speed, etc.) at runtime.
+
+![Demo](./demo.gif)
 
 ---
 
