@@ -1,7 +1,7 @@
 #include "InputHandler.h"
 #include "Player.h"
 #include "Maze.h"
-#include "Constants.h"
+#include "Config.h"
 
 bool InputHandler::keys[1024] = {false};
 
@@ -18,8 +18,8 @@ void InputHandler::keyCallback(GLFWwindow* window, int key, int scancode, int ac
 }
 
 void InputHandler::processInput(Player& player, Maze& maze, float deltaTime) {
-    float moveSpeed = MOVE_SPEED * deltaTime;
-    float turnSpeed = TURN_SPEED * deltaTime;
+    float moveSpeed = gConfig.moveSpeed * deltaTime;
+    float turnSpeed = gConfig.turnSpeed * deltaTime;
     
     // Movement
     if (keys[GLFW_KEY_W]) {

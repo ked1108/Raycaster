@@ -36,7 +36,7 @@ Raycaster::RayHit Raycaster::castRay(const Vec2& origin, float angle, Maze& maze
     }
     
     bool hit = false;
-    bool side; // Was it a NS or a EW wall hit?
+    bool side; 
     
     while (!hit) {
         if (sideDistX < sideDistY) {
@@ -78,7 +78,7 @@ Raycaster::RayHit Raycaster::castRay(const Vec2& origin, float angle, Maze& maze
 
 void Raycaster::render(const Player& player, Maze& maze) {
     wallDistances.clear();
-    wallDistances.resize(SCREEN_WIDTH);
+    wallDistances.resize(gConfig.screenWidth);
     
     glClear(GL_COLOR_BUFFER_BIT);
     
@@ -101,16 +101,16 @@ void Raycaster::render(const Player& player, Maze& maze) {
     glEnd();
     
     // Cast rays for each screen column
-    for (int x = 0; x < SCREEN_WIDTH; x++) {
+    for (int x = 0; x < gConfig.screenWidth; x++) {
         // Calculate ray angle
-        float cameraX = 2.0f * x / (float)SCREEN_WIDTH - 1.0f;
-        float rayAngle = player.angle + atan(cameraX * tan(FOV / 2));
+        float cameraX = 2.0f * x / (float)gConfig.screenWidth - 1.0f;
+        float rayAngle = player.angle + atan(cameraX * tan(gConfig.fov / 2));
         
         RayHit hit = castRay(player.pos, rayAngle, maze);
         wallDistances[x] = hit.distance;
         
         // Calculate wall height
-        float wallHeight = WALL_HEIGHT / hit.distance;
+        float wallHeight = gConfig.wallHeight / hit.distance;
         wallHeight = std::min(wallHeight, 2.0f); // Cap wall height
         
         // Calculate wall color based on distance and orientation
@@ -124,7 +124,7 @@ void Raycaster::render(const Player& player, Maze& maze) {
         }
         
         // Draw wall column
-        float screenX = -1.0f + 2.0f * x / SCREEN_WIDTH;
+        float screenX = -1.0f + 2.0f * x / gConfig.screenWidth;
         float wallTop = wallHeight;
         float wallBottom = -wallHeight;
         
@@ -140,15 +140,15 @@ void Raycaster::render(const Player& player, Maze& maze) {
 
 void Raycaster::renderMinimap(const Player& player, Maze& maze) {
     float minimapSize = 0.3f;
-    float minimapScale = minimapSize / std::max(MAZE_WIDTH, MAZE_HEIGHT);
+    float minimapScale = minimapSize / std::max(gConfig.mazeWidth, gConfig.mazeHeight);
     
     // Position minimap in top-right corner
     float minimapX = 0.7f;
     float minimapY = 0.7f;
     
     // Draw maze
-    for (int y = 0; y < MAZE_HEIGHT; y++) {
-        for (int x = 0; x < MAZE_WIDTH; x++) {
+    for (int y = 0; y < gConfig.mazeHeight; y++) {
+        for (int x = 0; x < gConfig.mazeWidth; x++) {
             float cellX = minimapX + x * minimapScale;
             float cellY = minimapY + y * minimapScale;
             

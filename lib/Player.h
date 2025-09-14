@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Vec2.h"
-#include "Constants.h"
+#include "Config.h"
 
 class Maze; //Forward Declaration
 

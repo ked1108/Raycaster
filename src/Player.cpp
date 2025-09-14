@@ -1,7 +1,7 @@
 #include "Vec2.h"
 #include "Player.h"
 #include "Maze.h"
-#include "Constants.h"
+#include "Config.h"
 
 Player::Player(float x, float y, float a) : pos(x, y), angle(a) {
     updateDirection();

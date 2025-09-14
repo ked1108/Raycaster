@@ -4,7 +4,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Vec2.h"
-#include "Constants.h"
+#include "Config.h"
 
 class Player;
 class Maze;

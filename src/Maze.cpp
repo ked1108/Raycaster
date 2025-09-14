@@ -1,9 +1,9 @@
 #include "Maze.h"
 
-Maze::Maze() : maze(MAZE_HEIGHT, std::vector<int>(MAZE_WIDTH, WALL)), rng(std::random_device{}()) {}
+Maze::Maze() : maze(gConfig.mazeHeight, std::vector<int>(gConfig.mazeWidth, WALL)), rng(std::random_device{}()) {}
 
 bool Maze::isValid(int x, int y) {
-    return x > 0 && x < MAZE_WIDTH - 1 && y > 0 && y < MAZE_HEIGHT - 1;
+    return x > 0 && x < gConfig.mazeWidth - 1 && y > 0 && y < gConfig.mazeHeight - 1;
 }
 
 std::vector<Maze::Cell> Maze::getUnvisitedNeighbors(int x, int y) {

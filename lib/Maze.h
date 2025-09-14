@@ -3,7 +3,7 @@
 #include <vector>
 #include <random>
 #include <stack>
-#include "Constants.h"
+#include "Config.h"
 
 class Maze {
 private:
